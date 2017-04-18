@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Button-counter-Martinez</string>
+    <string name="button_ascend">+5</string>
+    <string name="button_descend">-5</string>
+    <string name="button_clear">Clear</string>
 </resources>
