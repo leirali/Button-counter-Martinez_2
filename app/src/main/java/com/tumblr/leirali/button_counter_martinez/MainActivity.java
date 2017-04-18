@@ -8,12 +8,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button addButton;
-    private Button subButton;
-    private Button clearButton;
-    private TextView countText;
+    private Button increase;
+    private Button decrease;
+    private Button clear;
+    private TextView window;
     private Integer count;
-    private float textSpace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,35 +20,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         count = 0;
-        addButton = (Button)findViewById(R.id.add_button);
-        subButton = (Button)findViewById(R.id.sub_button);
-        clearButton = (Button)findViewById(R.id.clear_button);
-        countText = (TextView)findViewById(R.id.countTextView);
-        countText.setText(count.toString());
-        System.out.println(countText.getTextSize());
+        increase = (Button)findViewById(R.id.add_button);
+        decrease = (Button)findViewById(R.id.sub_button);
+        clear = (Button)findViewById(R.id.clear_button);
+        window = (TextView)findViewById(R.id.countTextView);
+        window.setText(count.toString());
+        System.out.println(window.getTextSize());
 
 
-        addButton.setOnClickListener(new View.OnClickListener(){
+        increase.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 add();
-                countText.setText(count.toString());
+                window.setText(count.toString());
             }
         });
 
-        subButton.setOnClickListener(new View.OnClickListener(){
+        decrease.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 remove();
-                countText.setText(count.toString());
+                window.setText(count.toString());
             }
         });
 
-        clearButton.setOnClickListener(new View.OnClickListener(){
+        clear.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 clearCount();
-                countText.setText(count.toString());
+                window.setText(count.toString());
             }
         });
 
@@ -60,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("countSave",count);
-        outState.putFloat("countSize", countText.getTextSize());
+        outState.putFloat("countSize", window.getTextSize());
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         count = savedInstanceState.getInt("countSave");
-        countText.setText(count.toString());
+        window.setText(count.toString());
     }
 
     public void add(){
